@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Lab 4 Memo Pad Using SQLite</string>
+    <string name="startText">New Memo</string>
+    <string name="textDeleteMemo">Memo # to Delete</string>
+    <string name="btnAddMemo">Add Memo</string>
+    <string name="btnDeleteMemo">Delete Memo</string>
 </resources>
