@@ -8,6 +8,11 @@ public class DefaultModel extends AbstractModel{
 
     private String memo1;
 
+    public DefaultModel(DatabaseHandler db) {
+        super();
+        this.db = db;
+    }
+
     public void initDefault() {
 
         try{
