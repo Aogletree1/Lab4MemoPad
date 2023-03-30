@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements AbstractView{
         setContentView(view);
 
         db = new DatabaseHandler(this, null, null, 1);
-        controller = new DefaultController();
+        controller = new DefaultController(db);
         DefaultModel model = new DefaultModel(db);
 
         controller.addView(this);

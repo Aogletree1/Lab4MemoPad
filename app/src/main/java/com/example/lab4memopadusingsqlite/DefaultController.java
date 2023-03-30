@@ -13,13 +13,18 @@ public class DefaultController extends AbstractController{
     public static final String DATABASE_TEXT = "memoContents";
     private DatabaseHandler db;
 
+    public DefaultController(DatabaseHandler db) {
+        super();
+        this.db = db;
+    }
+
     public void processInput(String tag) {
         setModelProperty(DATABASE_TEXT, tag);
 
     }
 
     public void addMemo(String newText){
-        Contact temp = new Contact(newText);
+        Memo temp = new Memo(newText);
         db.addExampleContacts();
         setModelProperty(DATABASE_TEXT, newText);
 

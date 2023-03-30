@@ -12,7 +12,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "mydatabase1.db";
     private static final String MEMOS = "memos";
 
-    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_ID = "id";
     public static final String MEMO_EXPLANATION = "explanation";
 
     public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -35,7 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void addMemo(Contact c) {
+    public void addMemo(Memo c) {
 
         ContentValues values = new ContentValues();
         values.put(MEMO_EXPLANATION, c.getName());
@@ -48,9 +48,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public String addExampleContacts() {
 
-        addMemo(new Contact("Martha C Zermeno"));
-        addMemo(new Contact("Dorothy R George"));
-        addMemo(new Contact("Amber C Hockman"));
+        addMemo(new Memo("Martha C Zermeno"));
+        addMemo(new Memo("Dorothy R George"));
+        addMemo(new Memo("Amber C Hockman"));
 
         return("Contacts Added");
 
@@ -66,22 +66,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public Contact getContact(int id) {
+    public Memo getContact(int id) {
 
         String query = "SELECT * FROM " + MEMOS + " WHERE " + COLUMN_ID + " = " + id;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
-        Contact c = null;
+        Memo c = null;
 
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
             int newId = cursor.getInt(0);
             String newName = cursor.getString(1);
-            String newAddress = cursor.getString(2);
             cursor.close();
-            c = new Contact(newId, newName, newAddress);
+            c = new Memo(newId, newName);
         }
 
         db.close();
@@ -91,7 +90,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public String getAllMemos() {
 
-        String query = "select * from " + MEMOS;
+        String query = "SELECT * FROM " + MEMOS;
         StringBuilder s = new StringBuilder();
 
         SQLiteDatabase db = this.getWritableDatabase();

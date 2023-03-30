@@ -1,16 +1,16 @@
 package com.example.lab4memopadusingsqlite;
 
-public class Contact {
+public class Memo {
 
     private int id;
     private String name;
 
-    public Contact(int id, String name, String address) {
+    public Memo(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Contact(String name) {
+    public Memo(String name) {
         this.name = name;
     }
 
