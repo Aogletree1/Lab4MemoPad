@@ -60,6 +60,11 @@ public class MainActivity extends AppCompatActivity implements AbstractView{
                 controller.deleteMemo(memoToDelete);
 
             }
+            else if (tag.equals("testGetMemos")){
+
+                String getMemo = db.getAllMemos();
+                binding.memoContents.setText(getMemo);
+            }
         }
     }
 

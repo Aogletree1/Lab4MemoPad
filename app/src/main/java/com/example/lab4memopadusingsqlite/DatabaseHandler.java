@@ -12,8 +12,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "mydatabase1.db";
     private static final String MEMOS = "memos";
 
-    public static final String COLUMN_ID = "id";
-    public static final String MEMO_EXPLANATION = "explanation";
+    public static final String COLUMN_ID = "_id";
+    public static final String MEMO_EXPLANATION = "explainations";
 
     public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -22,7 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_MEMOS_TABLE = "CREATE TABLE memos (_id integer primary key autoincrement, name text)";
+        String CREATE_MEMOS_TABLE = "CREATE TABLE memos (_id integer primary key autoincrement, explainations text)";
         db.execSQL(CREATE_MEMOS_TABLE);
 
     }
@@ -78,15 +78,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
             int newId = cursor.getInt(0);
-            String newName = cursor.getString(1);
+            String newMemo = cursor.getString(1);
             cursor.close();
-            c = new Memo(newId, newName);
+            c = new Memo(newId, newMemo);
         }
 
         db.close();
         return c;
 
     }
+    ///data/data/com.example.lab4memopadusingsqlite/databases
+    //sqlite3 ./mydatabase.db
 
     public String getAllMemos() {
 
