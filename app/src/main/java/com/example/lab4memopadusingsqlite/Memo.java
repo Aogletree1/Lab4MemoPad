@@ -3,15 +3,15 @@ package com.example.lab4memopadusingsqlite;
 public class Memo {
 
     private int id;
-    private String name;
+    private String memo;
 
     public Memo(int id, String name) {
         this.id = id;
-        this.name = name;
+        this.memo = name;
     }
 
     public Memo(String name) {
-        this.name = name;
+        this.memo = name;
     }
 
     public int getId() {
@@ -22,19 +22,19 @@ public class Memo {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getMemo() {
+        return memo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("Name: ").append(name).append("\n");
+        s.append(getId()).append(". ").append(memo).append("\n");
         return s.toString();
     }
 

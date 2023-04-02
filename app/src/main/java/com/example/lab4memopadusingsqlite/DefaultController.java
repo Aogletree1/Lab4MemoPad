@@ -28,13 +28,14 @@ public class DefaultController extends AbstractController{
         db.addMemo(temp);
         setModelProperty(DATABASE_TEXT, newText);
 
-
-
     }
 
-    public void deleteMemo(String newText){
-        setModelProperty(DATABASE_TEXT, newText);
 
+    public void deleteMemo(String newText){
+        String temp = newText;
+
+        db.memoToDelete(temp);
+        setModelProperty(DATABASE_TEXT, newText);
     }
 
     public void printScreen(){

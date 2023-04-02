@@ -38,7 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void addMemo(Memo c) {
 
         ContentValues values = new ContentValues();
-        values.put(MEMO_EXPLANATION, c.getName());
+        values.put(MEMO_EXPLANATION, c.getMemo());
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(MEMOS, null, values);
@@ -56,17 +56,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public String deleteAllContacts() {
+    public String memoToDelete(String id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.delete(MEMOS, null, null);
+        db.delete(MEMOS, id, null);
 
         return("Contacts Deleted");
 
     }
 
-    public Memo getContact(int id) {
+    public Memo getMemo(int id) {
 
         String query = "SELECT * FROM " + MEMOS + " WHERE " + COLUMN_ID + " = " + id;
 
@@ -103,7 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             do {
                 int id = cursor.getInt(0);
-                s.append(getContact(id)).append("\n");
+                s.append(getMemo(id)).append("\n");
             }
             while ( cursor.moveToNext() );
         }
