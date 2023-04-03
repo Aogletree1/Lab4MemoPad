@@ -60,9 +60,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.delete(MEMOS, id, null);
+        String query = "DELETE FROM " + MEMOS + " WHERE " + COLUMN_ID + "=" + id + ";";
 
-        return("Contacts Deleted");
+        db.execSQL(query);
+
+        return("Memos Deleted");
 
     }
 
